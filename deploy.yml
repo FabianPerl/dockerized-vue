@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-deployment
+  labels:
+    app: vue
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: vue
+  template:
+    metadata:
+      labels:
+        app: vue
+    spec:
+      containers:
+      - name: vue
+        image: vuejs-cookbook/dockerize-vuejs-app 
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
